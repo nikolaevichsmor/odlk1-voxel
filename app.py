@@ -93,13 +93,18 @@ def main():
     def on_open():
         webbrowser.open(visualizer_url)
 
-    def on_toggle_pause():
-        if pause_event.is_set():
-            pause_event.clear()
-            tray.set_paused(False)
+    def on_toggle_pause(paused=None):
+        if paused is None:
+            should_pause = not pause_event.is_set()
         else:
+            should_pause = bool(paused)
+
+        if should_pause:
             pause_event.set()
             tray.set_paused(True)
+        else:
+            pause_event.clear()
+            tray.set_paused(False)
 
     def on_exit():
         stop_event.set()
@@ -114,6 +119,7 @@ def main():
     tray = TrayIcon(
         title="ODLK1 Voxel",
         icon_path=icon_path,
+        module_name="visualizer",
         on_open=on_open,
         on_toggle_pause=on_toggle_pause,
         on_exit=on_exit
