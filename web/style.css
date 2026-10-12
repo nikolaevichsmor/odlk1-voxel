@@ -1,0 +1,26 @@
+:root { --bg: #fff; --fg: #000; --dim: #404040; --line: #808080; }
+body.dark { --bg: #000; --fg: #fff; --dim: #c0c0c0; --line: #808080; }
+
+html, body { margin: 0; height: 100%; overflow: hidden; background: var(--bg); }
+#app, #app canvas { position: fixed; inset: 0; display: block; }
+
+#theme { position: fixed; top: 12px; right: 12px; padding: 3px 10px;
+  background: var(--bg); color: var(--fg); border: 1px solid var(--fg); border-radius: 0;
+  font: 12px "Courier New", Courier, monospace; cursor: pointer; }
+#theme:active { background: var(--fg); color: var(--bg); }
+
+#left { position: fixed; left: 12px; bottom: 12px; width: 233px;
+  display: flex; flex-direction: column; gap: 6px;
+  color: var(--fg); font: 12px "Courier New", Courier, monospace; }
+
+#stats { border: 1px solid var(--fg); background: var(--bg); padding: 4px 6px; }
+#stats .wu { white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  border-bottom: 1px solid var(--line); padding-bottom: 3px; margin-bottom: 3px; }
+#stats .r { display: flex; justify-content: space-between; line-height: 16px; }
+#stats .r span:first-child { color: var(--dim); }
+#stats .bar { height: 8px; border: 1px solid var(--line); margin: 2px 0 4px; }
+#stats .bar div { height: 100%; width: 0; background: var(--fg); }
+
+#mini { display: grid; grid-template-columns: repeat(10, 22px); grid-auto-rows: 22px;
+  gap: 1px; padding: 1px; background: var(--line); border: 1px solid var(--fg); }
+#mini div { background: var(--bg); display: flex; align-items: center; justify-content: center; }

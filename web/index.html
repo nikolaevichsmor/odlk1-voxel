@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>ODLK1</title>
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <link rel="stylesheet" href="style.css" />
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "./vendor/three.module.js",
+      "three/addons/controls/OrbitControls.js": "./vendor/OrbitControls.js"
+    }
+  }
+  </script>
+</head>
+<body>
+  <div id="app"></div>
+  <button id="theme" type="button"></button>
+  <div id="left">
+    <div id="stats">
+      <div id="s-wu" class="wu">-</div>
+      <div class="r"><span>Progress</span><span id="s-progress">-</span></div>
+      <div class="bar"><div id="s-bar"></div></div>
+      <div class="r"><span>Time</span><span id="s-elapsed">-</span></div>
+      <div class="r"><span>Remaining</span><span id="s-remaining">-</span></div>
+      <div class="r"><span>Checked</span><span id="s-checked">-</span></div>
+      <div class="r"><span>Of</span><span id="s-total">-</span></div>
+    </div>
+    <div id="mini"></div>
+  </div>
+  <script type="module" src="main.js"></script>
+</body>
+</html>
