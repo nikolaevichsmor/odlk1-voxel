@@ -3,6 +3,13 @@
 Real-time visualization of an **ODLK** BOINC task (diagonal Latin squares 10×10) as an interactive 3D 10×10×10 voxel cube:
 **X** is the column, **Y** is the row, **Z** is the digit in the cell. It displays the current square being tested by ODLK and live workunit statistics.
 
+[![Tests](https://github.com/nikolaevichsmor/odlk1-voxel/actions/workflows/tests.yml/badge.svg)](https://github.com/nikolaevichsmor/odlk1-voxel/actions/workflows/tests.yml)
+[![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
+[![Three.js](https://img.shields.io/badge/Three.js-3D%20WebGL-black.svg?logo=three.js)](https://threejs.org/)
+[![BOINC](https://img.shields.io/badge/BOINC-ODLK1-005086.svg)](https://boinc.multi-pool.info/latinsquares/)
+[![Platform](https://img.shields.io/badge/platform-Windows-0078D6.svg)](https://www.microsoft.com/windows)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 ![ODLK1 Voxel Screenshot](docs/screenshot.png)
 
 ## Quick start
