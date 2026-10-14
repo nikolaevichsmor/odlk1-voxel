@@ -45,8 +45,10 @@ def main():
     # Single-instance check
     mutex = None
     if sys.platform == "win32":
-        mutex = ctypes.windll.kernel32.CreateMutexW(None, True, "Local\\ODLK1_Voxel_App_Singleton")
-        if ctypes.windll.kernel32.GetLastError() == 183:
+        k32 = ctypes.WinDLL("kernel32", use_last_error=True)
+        ctypes.set_last_error(0)
+        mutex = k32.CreateMutexW(None, True, "Local\\ODLK1_Voxel_App_Singleton")
+        if ctypes.get_last_error() == 183:
             webbrowser.open(f"http://127.0.0.1:{args.http_port}/")
             return
 
