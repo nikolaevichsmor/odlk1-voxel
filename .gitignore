@@ -6,11 +6,3 @@ scratch*
 *.log
 *.zip
 discord_config.json
-
-# Standalone Discord RPC (tracked in odlk1-discord)
-discord_rpc.py
-run_discord_rpc.py
-start_discord.bat
-docs/odlk1_logo_1024.png
-docs/odlk1_logo_padded.png
-docs/odlk1_logo_padded_dark.png
