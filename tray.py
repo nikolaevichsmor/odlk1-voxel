@@ -165,12 +165,12 @@ class TrayIcon:
         # Attempt to become Host on IPC port 5055
         self._try_bind_host()
         if self.is_host:
+            # Start IPC server thread immediately to accept secondary modules
+            threading.Thread(target=self._ipc_server_loop, daemon=True).start()
             # We are the Tray Host: start the tray icon window
             t = threading.Thread(target=self._run_host_window, daemon=True)
             t.start()
             self._ready.wait(timeout=5.0)
-            # Start IPC server thread to accept secondary modules
-            threading.Thread(target=self._ipc_server_loop, daemon=True).start()
         else:
             # Another module is already Host: connect as client to its tray
             self._ready.set()
@@ -179,8 +179,10 @@ class TrayIcon:
     def _try_bind_host(self):
         if sys.platform == "win32":
             # Named Mutex: guaranteed OS-level single instance for Tray Host
+            ctypes.set_last_error(0)
             self.host_mutex = kernel32.CreateMutexW(None, True, "Local\\ODLK1_Unified_Tray_Host_Mutex")
-            if kernel32.GetLastError() != 0:
+            err = ctypes.get_last_error() or kernel32.GetLastError()
+            if not self.host_mutex or err == 183:  # ERROR_ALREADY_EXISTS
                 if self.host_mutex:
                     kernel32.CloseHandle(self.host_mutex)
                     self.host_mutex = None
@@ -189,7 +191,10 @@ class TrayIcon:
 
         try:
             s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-            s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+            if sys.platform == "win32":
+                s.setsockopt(socket.SOL_SOCKET, getattr(socket, "SO_EXCLUSIVEADDRUSE", -5), 1)
+            else:
+                s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
             s.bind(("127.0.0.1", TRAY_IPC_PORT))
             s.listen(5)
             self.host_socket = s
@@ -197,6 +202,7 @@ class TrayIcon:
         except OSError:
             self.is_host = False
             if self.host_mutex and sys.platform == "win32":
+                kernel32.ReleaseMutex(self.host_mutex)
                 kernel32.CloseHandle(self.host_mutex)
                 self.host_mutex = None
 
