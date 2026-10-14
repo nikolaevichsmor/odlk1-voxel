@@ -10,7 +10,7 @@ an interactive **2.5D isometric 10×10 pillar landscape** on the left (**X** is 
 [![Platform](https://img.shields.io/badge/platform-Windows-0078D6.svg)](https://www.microsoft.com/windows)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-![ODLK1 Voxel Screenshot](docs/screenshot.png)
+![ODLK1 Voxel Screenshot](docs/screenshot.png?v=2)
 
 ## Quick start
 
