@@ -1,7 +1,7 @@
 # ODLK1 Voxel
 
-Real-time visualization of an **ODLK** BOINC task (diagonal Latin squares 10×10) as an interactive 3D 10×10×10 voxel cube:
-**X** is the column, **Y** is the row, **Z** is the digit in the cell. It displays the current square being tested by ODLK and live workunit statistics.
+Real-time split-screen visualization of an **ODLK** BOINC task (diagonal Latin squares 10×10):
+an interactive **2.5D isometric 10×10 pillar landscape** on the left (**X** is the column, **Y** is the row, **Z** is the pillar height and ODLK digit color `0..9`) paired with a synchronized **10×10 color matrix**, digit filter (`All | 0..9`), and live workunit statistics.
 
 [![Tests](https://github.com/nikolaevichsmor/odlk1-voxel/actions/workflows/tests.yml/badge.svg)](https://github.com/nikolaevichsmor/odlk1-voxel/actions/workflows/tests.yml)
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
@@ -34,7 +34,7 @@ odlk*.exe --(read-only memory)--> sniffer.py --UDP 127.0.0.1:5005--> bridge.py -
 
 - `sniffer.py` reads the running ODLK process memory (`PROCESS_VM_READ`) without any memory writes or injections. It automatically selects the workunit with the lowest progress and follows it to completion before moving to the next.
 - `bridge.py` receives UDP frames, queries `boinccmd`, serves static assets from `web/`, and pushes updates to the browser via SSE.
-- `web/` is a lightweight Three.js frontend (bundled locally): 3D cube, live 10×10 matrix, workunit statistics, and theme toggle.
+- `web/` is a lightweight split-screen frontend: interactive 2.5D isometric 10×10 pillar landscape (with 360° mouse rotation, tilt, and scroll zoom), live 10×10 ODLK color matrix, digit filter (`All | 0..9`), workunit statistics, and theme toggle.
 
 Displayed statistics: workunit name (WU), progress bar, elapsed time, estimated remaining time (from BOINC), squares checked, and total search size.
 
