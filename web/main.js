@@ -86,7 +86,7 @@ ringCanvas.addEventListener('wheel', (e) => {
 }, { passive: false });
 
 // ---------- Theme ----------
-let dark = true;
+let dark = false;
 const themeBtn = document.getElementById('theme');
 
 function applyTheme(d) {
@@ -121,13 +121,13 @@ function updateDigitButtons() {
   for (const item of digitBtns) {
     const active = item.val === selectedDigit;
     if (item.val === -1) {
-      item.el.style.background = active ? '#ff0000' : (dark ? '#111' : '#fff');
-      item.el.style.color = active ? '#fff' : (dark ? '#fff' : '#000');
+      item.el.style.background = active ? '#ff0000' : (dark ? '#111111' : '#ffffff');
+      item.el.style.color = active ? '#ffffff' : (dark ? '#ffffff' : '#000000');
     } else {
       const col = ODLK_COLORS[item.val];
-      item.el.style.background = active ? col : hexToRgba(col, dark ? 0.28 : 0.22);
-      item.el.style.color = active ? ((item.val === 4 || item.val === 5) ? '#000' : '#fff') : col;
-      item.el.style.outline = active ? '1px solid #fff' : 'none';
+      item.el.style.background = active ? col : (dark ? '#111827' : '#ffffff');
+      item.el.style.color = active ? ((item.val === 4 || item.val === 5) ? '#000000' : '#ffffff') : (item.val === 4 ? '#558b00' : (item.val === 5 ? '#00a000' : col));
+      item.el.style.outline = active ? (dark ? '1px solid #ffffff' : '1px solid #000000') : 'none';
     }
   }
 }
@@ -438,5 +438,5 @@ function tick(now) {
   renderPillars();
 }
 
-applyTheme(true);
+applyTheme(false);
 requestAnimationFrame(tick);
