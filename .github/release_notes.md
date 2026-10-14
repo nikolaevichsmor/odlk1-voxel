@@ -1,6 +1,6 @@
-### Real-Time 3D Voxel Visualizer for BOINC ODLK Tasks
+### Real-Time Split-Screen Visualizer for BOINC ODLK Tasks
 
-Real-time 3D voxel tensor visualizer for BOINC **ODLK** computations (searching for diagonal Latin squares of order 10) rendered as an interactive $10 \times 10 \times 10$ voxel cube.
+Real-time split-screen visualizer for BOINC **ODLK** computations (searching for diagonal Latin squares of order 10) rendered as an interactive **2.5D isometric $10 \times 10$ pillar landscape** alongside a synchronized **multi-color $10 \times 10$ ODLK matrix**.
 
 ---
 
@@ -8,7 +8,7 @@ Real-time 3D voxel tensor visualizer for BOINC **ODLK** computations (searching 
 
 - **Zero Overhead**: Process memory is monitored strictly read-only (`PROCESS_VM_READ`), ensuring no slowdown to BOINC calculations.
 - **Continuous Tracking**: Automatically targets the workunit with the lowest progress and tracks it through to 100% completion before switching to the next task.
-- **Interactive 3D View**: Hardware-accelerated Three.js rendering with orbital camera controls, theme toggle (light/dark), and depth cues.
+- **Split-Screen 2.5D & Matrix View**: Interactive 2.5D isometric $10 \times 10$ pillar landscape (with 360° mouse rotation, tilt, and scroll zoom) on the left, paired with a high-contrast ODLK color $10 \times 10$ matrix and digit filter (`All | 0..9`) on the right.
 - **Live Telemetry**: Real-time progress bar, search space counters, elapsed time, and estimated remaining computation.
 
 ---
@@ -24,4 +24,3 @@ Real-time 3D voxel tensor visualizer for BOINC **ODLK** computations (searching 
 ---
 
 **Requirements:** Windows, Python 3.8+ (standard library only — no `pip` dependencies needed).
-
