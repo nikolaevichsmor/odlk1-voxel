@@ -121,7 +121,6 @@ def main():
     tray = TrayIcon(
         title="ODLK1 Voxel",
         icon_path=icon_path,
-        module_name="visualizer",
         on_open=on_open,
         on_toggle_pause=on_toggle_pause,
         on_exit=on_exit
