@@ -64,12 +64,6 @@ python mock_sender.py --steps 200
 `boinccmd.exe` and the BOINC data directory are detected automatically.
 For custom installations, use `--boinccmd <path>` and `--boinc-data <path>`.
 
-## Discord Rich Presence Integration
-
-This visualizer features native synergy with [odlk1-discord](https://github.com/nikolaevichsmor/odlk1-discord) (standalone Discord Rich Presence for ODLK1).
-
-When both applications are running, they automatically link via local IPC and share a **single unified Windows system tray icon**, providing synchronized controls (pause/resume 3D visualizer, pause/resume Discord status, and exit) without duplicate tray icons.
-
 ## Safety
 
 The sniffer opens target processes strictly with read-only access and executes at below-normal priority. This project is independent and not affiliated with ODLK or BOINC.
